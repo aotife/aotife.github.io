@@ -5,6 +5,7 @@ export default defineClientConfig({
   enhance({ app, router, siteData }) {
     const pagesData = usePageData()
     console.log(pagesData.value)
+
   },
   setup() {},
   rootComponents: [],
