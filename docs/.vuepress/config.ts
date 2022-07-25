@@ -15,6 +15,10 @@ module.exports = {
       lastUpdatedText: '最近更新时间' ,  //文章页面显示最近更新时间  git
       contributorsText:'贡献者', //文章显示贡献者 git
       notFound:['Not Found'],
+      editLinkText:'在GitHub上编辑页面',   //在github上编辑
+      docsRepo: 'https://github.com/aotife/aotife.github.io',//在github上编辑
+      docsDir: 'docs',//在github上编辑
+      editLinkPattern: ':repo/edit/:branch/:path',//在github上编辑
       navbar: [
         {
           text: '首页',
