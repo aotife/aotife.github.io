@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.49">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <title>DELL 网络交换机 基本配置说明 | chjina Wiki !</title><meta name="description" content="这是我的第一个 VuePress 站点">
+    <link rel="modulepreload" href="/assets/app.cb419aa4.js"><link rel="modulepreload" href="/assets/index.html.fe6aa4ac.js"><link rel="modulepreload" href="/assets/index.html.dae1b352.js"><link rel="prefetch" href="/assets/index.html.4047a691.js"><link rel="prefetch" href="/assets/index.html.6e24346f.js"><link rel="prefetch" href="/assets/默认信息.html.ede980ac.js"><link rel="prefetch" href="/assets/Frontmatter.html.9260cbc2.js"><link rel="prefetch" href="/assets/端口镜像.html.c0647737.js"><link rel="prefetch" href="/assets/IRF堆叠.html.2251510e.js"><link rel="prefetch" href="/assets/index.html.8cceeab2.js"><link rel="prefetch" href="/assets/VCSA6.7无DNS安装.html.9b589572.js"><link rel="prefetch" href="/assets/404.html.265028f6.js"><link rel="prefetch" href="/assets/index.html.500da644.js"><link rel="prefetch" href="/assets/index.html.dc8822cb.js"><link rel="prefetch" href="/assets/默认信息.html.a4c72dde.js"><link rel="prefetch" href="/assets/Frontmatter.html.7271de08.js"><link rel="prefetch" href="/assets/端口镜像.html.13a26daa.js"><link rel="prefetch" href="/assets/IRF堆叠.html.46cde5c0.js"><link rel="prefetch" href="/assets/index.html.5ef98600.js"><link rel="prefetch" href="/assets/VCSA6.7无DNS安装.html.48e02034.js"><link rel="prefetch" href="/assets/404.html.82475bf9.js"><link rel="prefetch" href="/assets/404.0ba28351.js"><link rel="prefetch" href="/assets/Layout.dc8f641f.js">
+    <link rel="stylesheet" href="/assets/style.f4d22aab.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container no-sidebar"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><span class="site-name">chjina Wiki !</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="数通"><span class="title">数通</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="数通"><span class="title">数通</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CT/H3C" class="" aria-label="华三"><!--[--><!--]--> 华三 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CT/RuiJie" class="" aria-label="锐捷"><!--[--><!--]--> 锐捷 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CT/HuaWe" class="" aria-label="华为"><!--[--><!--]--> 华为 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a aria-current="page" href="/CT/DEll" class="router-link-active router-link-exact-active" aria-label="戴尔"><!--[--><!--]--> 戴尔 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="服务器"><span class="title">服务器</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="服务器"><span class="title">服务器</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/IT/Dell" class="" aria-label="戴尔"><!--[--><!--]--> 戴尔 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/IT/HP" class="" aria-label="惠普"><!--[--><!--]--> 惠普 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/IT/Inspur" class="" aria-label="浪潮"><!--[--><!--]--> 浪潮 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="虚拟化"><span class="title">虚拟化</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="虚拟化"><span class="title">虚拟化</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/VT/Vmware" class="" aria-label="Vmware"><!--[--><!--]--> Vmware <!--[--><!--]--></a></li><!--]--></ul></div></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/" class="" aria-label="首页"><!--[--><!--]--> 首页 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="数通"><span class="title">数通</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="数通"><span class="title">数通</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/CT/H3C" class="" aria-label="华三"><!--[--><!--]--> 华三 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CT/RuiJie" class="" aria-label="锐捷"><!--[--><!--]--> 锐捷 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/CT/HuaWe" class="" aria-label="华为"><!--[--><!--]--> 华为 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a aria-current="page" href="/CT/DEll" class="router-link-active router-link-exact-active" aria-label="戴尔"><!--[--><!--]--> 戴尔 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="服务器"><span class="title">服务器</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="服务器"><span class="title">服务器</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/IT/Dell" class="" aria-label="戴尔"><!--[--><!--]--> 戴尔 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/IT/HP" class="" aria-label="惠普"><!--[--><!--]--> 惠普 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/IT/Inspur" class="" aria-label="浪潮"><!--[--><!--]--> 浪潮 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="虚拟化"><span class="title">虚拟化</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="虚拟化"><span class="title">虚拟化</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/VT/Vmware" class="" aria-label="Vmware"><!--[--><!--]--> Vmware <!--[--><!--]--></a></li><!--]--></ul></div></div><!--]--></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="dell-网络交换机-基本配置说明" tabindex="-1"><a class="header-anchor" href="#dell-网络交换机-基本配置说明" aria-hidden="true">#</a> DELL 网络交换机 基本配置说明</h1><h2 id="配置账号密码" tabindex="-1"><a class="header-anchor" href="#配置账号密码" aria-hidden="true">#</a> 配置账号密码</h2><p>Dell 默认的用户名和密码都是 admin，如果希望修改或添加新的用户</p><p>账号:<strong>admin</strong> 密码:<strong>passwor_123</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# username admin password passwor_123 role sysadmin
+OS10(config)# end
+OS10# write memory
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="设置带外管理" tabindex="-1"><a class="header-anchor" href="#设置带外管理" aria-hidden="true">#</a> 设置带外管理</h2><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10#
+OS10# configure terminal  
+OS10(config)# interface mgmt 1/1/1
+OS10(conf-if-ma-1/1/1)# no ip address dhcp
+OS10(conf-if-ma-1/1/1)# no ipv6 address autoconfig
+OS10(conf-if-ma-1/1/1)# exit
+OS10(config)# ip vrf management
+OS10(conf-vrf)# interface management
+OS10(conf-vrf)# exit
+OS10(config)# interface mgmt 1/1/1
+OS10(conf-if-ma-1/1/1)# ip address 10.0.0.1/24
+OS10(conf-if-ma-1/1/1)# no shutdown
+OS10(conf-if-ma-1/1/1)# show configuration
+!
+interface mgmt1/1/1
+no shutdown
+no ip address dhcp
+ip address 10.0.0.1/24
+OS10(conf-if-ma-1/1/1)# exit
+OS10#OS10(config)# management route 0.0.0.0/0 172.16.1.254 (带外网络默认路由)
+OS10(config)#do write
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="交换机接口配置" tabindex="-1"><a class="header-anchor" href="#交换机接口配置" aria-hidden="true">#</a> 交换机接口配置</h2><h3 id="设置accsee模式" tabindex="-1"><a class="header-anchor" href="#设置accsee模式" aria-hidden="true">#</a> 设置Accsee模式</h3><p>例：创建 VLAN10 并将 e1/1/1 接口以 access 模式划入 vlan10.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# interface vlan 10            //创建vlan10
+OS10(conf-if-vl-10)# exit
+OS10(config)# interface e1/1/1
+OS10(conf-if-eth1/1/1)# switchport mode access     //设置为accsee模式
+OS10(conf-if-eth1/1/1)# switchport access vlan 10   // 设置为vlan 10通过
+OS10(conf-if-eth1/1/1)# no shutdown
+OS10(conf-if-eth1/1/1)# do write
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="trunk-模式" tabindex="-1"><a class="header-anchor" href="#trunk-模式" aria-hidden="true">#</a> Trunk 模式</h3><p>例：创建 VLAN10 和 20，并将 e1/1/2 接口配置为 trunk 模式且放行 vlan10 和 20.</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# interface vlan 10
+OS10(conf-if-vl-10)# exit
+OS10(config)# interface vlan 20
+OS10(conf-if-vl-20)# exit
+OS10(config)# interface e1/1/2
+OS10(conf-if-eth1/1/2)# switchport mode trunk         //设置为trunk模式
+OS10(conf-if-eth1/1/2)# switchport trunk allowed vlan 10,20  //允许vlan10 20 通过
+OS10(conf-if-eth1/1/2)# show configuration
+!
+interface ethernet1/1/2
+no shutdown
+switchport mode trunk
+switchport access vlan 1 (如果你希望 默认vlan 为 2，此处请 switch access vlan 2 )
+switchport trunk allowed vlan 10,20
+OS10(conf-if-eth1/1/2)# do write memory
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="修改默认-vlan" tabindex="-1"><a class="header-anchor" href="#修改默认-vlan" aria-hidden="true">#</a> 修改默认 VLAN</h3><p>OS10 默认 VLAN 是 1 且默认所有 trunk 口都 untagged vlan1，如果需要修改其他 VLAN 为 默认 VLAN</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# interface vlan 4093
+OS10(conf-if-vl-4093)# exit
+OS10(config)# default vlan-id 4093
+OS10(config)# do show vlan
+Codes: * - Default VLAN, M - Management VLAN, R - Remote Port Mirroring VLANs
+Q: A - Access (Untagged), T - Tagged
+NUM Status Description Q Ports
+1 Inactive
+* 4093 Active A Eth1/1/1-1/1/32
+OS10(config)#do write
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="设置链路聚合" tabindex="-1"><a class="header-anchor" href="#设置链路聚合" aria-hidden="true">#</a> 设置链路聚合</h2><h3 id="静态链路聚合" tabindex="-1"><a class="header-anchor" href="#静态链路聚合" aria-hidden="true">#</a> 静态链路聚合</h3><p>本例：对 e1/1/49 和 50 接口静态聚合为 PO1，并且配置为 trunk 模式和放行 vlan10,20</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# interface port-channel 1              //创建聚合口1
+OS10(conf-if-po-1)# switchport mode trunk             //设置为trunk模式
+OS10(conf-if-po-1)# switchport trunk allowed vlan 10,20   //放行vlan 10,20
+OS10(conf-if-po-1)# no shutdown
+OS10(conf-if-po-1)# exit
+OS10(config)# interface range e1/1/49-1/1/50           //进入1/1/49-1/1/50接口
+OS10(conf-range-eth1/1/49-1/1/50)# channel-group 1      // 加入聚合口1
+OS10(conf-range-eth1/1/49-1/1/50)# no shutdown           
+OS10(conf-range-eth1/1/49-1/1/50)# end
+OS10#write
+查看：
+OS10# show interface port-channel 1 summary
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="动态-lacp-聚合" tabindex="-1"><a class="header-anchor" href="#动态-lacp-聚合" aria-hidden="true">#</a> 动态 LACP 聚合</h3><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# configure terminal
+OS10(config)# interface port-channel 1
+OS10(conf-if-po-1)# switchport mode trunk
+OS10(conf-if-po-1)# switchport trunk allowed vlan 10,20
+OS10(conf-if-po-1)# no shutdown
+OS10(conf-if-po-1)# exit
+OS10(config)# interface range e1/1/49-1/1/50
+OS10(conf-range-eth1/1/49-1/1/50)# channel-group 1 mode active   //设置为lacp模式
+OS10(conf-range-eth1/1/49-1/1/50)# no shutdown
+OS10(conf-range-eth1/1/49-1/1/50)# end
+OOS100#write
+查看：
+OOS100# show interface port-channel 1 summary
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="本地端口镜像" tabindex="-1"><a class="header-anchor" href="#本地端口镜像" aria-hidden="true">#</a> 本地端口镜像</h2><p>本例中，将 e1/1/1 口的进和出两个方向的流量镜像到 e1/1/2 口进行抓包分析。</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10(config)# interface e1/1/2
+OS10(conf-if-eth1/1/2)# no switchport
+OS10(conf-if-eth1/1/2)#exit
+OS10(config)# monitor session 1             //创建本地镜像组
+OS10(conf-mon-local-1)# source interface ethernet 1/1/1 both    //设置源端口（被监控的）
+OS10(conf-mon-local-1)# destination interface e1/1/2            //设置目的端口（监控的）
+OS10(conf-mon-local-1)# no shut
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="dhcp-server-配置" tabindex="-1"><a class="header-anchor" href="#dhcp-server-配置" aria-hidden="true">#</a> DHCP Server 配置</h2><p>本例中，网段为192.168.10.0/24，网关为192.168.10.1，dns为8.8.8.8和9.9.9.9，</p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>
+OS10# configure terminal
+OS10(config)# ip dhcp server
+OS10(config-dhcp)# pool 192_168_10
+OS10(config-dhcp-192_168_10)# lease 0 6 0 （租期为 6 小时）
+OS10(config-dhcp-192_168_10)# network 192.168.10.0/24 （此处的/24 前面是没有空格的）
+OS10(config-dhcp-192_168_10)# default-router 192.168.10.1 （网关地址）
+OS10(config-dhcp-192_168_10)# dns-server 8.8.8.8
+OS10(config-dhcp-192_168_10)# dns-server 9.9.9.9
+OS10(config-dhcp-192_168_10)# domain-name dhcp.os10.dell （名称，可选）
+OS10(config-dhcp-192_168_10)# exit
+OS10(config-dhcp)# no disable
+OS10(config-dhcp)# do write
+查看地址分配表:
+OS10#show ip dhcp binding
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="一般命令" tabindex="-1"><a class="header-anchor" href="#一般命令" aria-hidden="true">#</a> 一般命令</h2><h4 id="保存" tabindex="-1"><a class="header-anchor" href="#保存" aria-hidden="true">#</a> 保存</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10# write //保存交换机配置，请在完成必要配置之后，记得使用此命令保存，否则交换机重启后没保存的配置将丢失
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h4 id="修改名称" tabindex="-1"><a class="header-anchor" href="#修改名称" aria-hidden="true">#</a> 修改名称</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10&gt;en
+OS10#configure
+OS10(config)#hostname ABC //将交换机改名为ABC
+OS10(config)#end
+OS10#write
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="配置边缘端口" tabindex="-1"><a class="header-anchor" href="#配置边缘端口" aria-hidden="true">#</a> 配置边缘端口</h4><p><strong>连接到此交换机的电脑获取DHCP非常慢，或者很慢才能够识别网络，可以考虑配置</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10#configure
+OS10(config)#interface gi1/0/1 //如果对多个端口同时配置，可以使用interface range gi1/0/1-12
+OS10(config-if)# spanning-tree portfast
+OS10(config-if)#exit
+OS10(config)#end
+OS10#write
+
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="开启巨帧流控" tabindex="-1"><a class="header-anchor" href="#开启巨帧流控" aria-hidden="true">#</a> 开启巨帧流控</h4><p><strong>连接ISCSI存储时一般建议配置巨帧和流控</strong></p><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10&gt;enable
+OS10#configure
+OS10(config)#system jumbo mtu 9216 -------------开巨帧
+OS10(config)#flowcontrol receive on -------------开流控
+OS10(config)#end
+OS10#write
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="删除配置-重置交换机" tabindex="-1"><a class="header-anchor" href="#删除配置-重置交换机" aria-hidden="true">#</a> 删除配置（重置交换机）</h4><div class="language-text ext-text line-numbers-mode"><pre class="language-text"><code>OS10&gt;enable
+OS10#write //保存配置
+OS10#delete startup-config //删除启动配置文件
+Delete startup-config ? (y/n) y //y 确认删除
+OS10# reload //重启交换机
+Are you sure you want to reload the stack? (y/n) y //y 确认重启
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div><!--[--><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">最近更新时间: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: adsdye@outlook.com">chjinas</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script type="module" src="/assets/app.cb419aa4.js" defer></script>
+  </body>
+</html>
